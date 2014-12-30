@@ -39,15 +39,6 @@
                    valueInDollars:0
                      serialNumber:@""];
 }
-// Third initializer
-- (instancetype)initWithItemName:(NSString *)name
-                    serialNumber:(NSString *)sNumber
-{
-    return [self initWithItemName:name
-                   valueInDollars:0
-                     serialNumber:sNumber];
-}
-
 // Call initWithItemName: (which calls designated initializer),
 // passing it the default item values
 - (instancetype)init
@@ -86,10 +77,37 @@
     
 }
 
-// Display a message when an object is dellocated by ARC
-- (void)dealloc
+// Getters/Setters
+- (void)setItemName:(NSString *)str
 {
-    NSLog(@"Object Destroyed!", self);
+    _itemName = str;
+}
+- (NSString *)itemName
+{
+    return _itemName;
+}
+
+- (void)setSerialNumber:(NSString *)str
+{
+    _serialNumber = str;
+}
+- (NSString *)serialNumber
+{
+    return _serialNumber;
+}
+
+- (void)setValueInDollars:(int)v
+{
+    _valueInDollars = v;
+}
+- (int)valueInDollars
+{
+    return _valueInDollars;
+}
+
+- (NSDate *)dateCreated
+{
+    return _dateCreated;
 }
 
 // Override the description of NSObject
