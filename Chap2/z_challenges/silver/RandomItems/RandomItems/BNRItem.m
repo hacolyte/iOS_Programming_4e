@@ -48,6 +48,13 @@
                      serialNumber:sNumber];
 }
 
+// Create custom implementation of setContainedItem to provide additional functionality
+- (void)setContainedItem:(BNRItem *)containedItem
+{
+    _containedItem = containedItem;
+    self.containedItem.container = self;
+}
+
 // Call initWithItemName: (which calls designated initializer),
 // passing it the default item values
 - (instancetype)init
@@ -77,10 +84,16 @@
     
     int randomValue = arc4random() % 100;
     
-    NSString *randomSerialNumber = [NSString stringWithFormat:@"%c%c%c%c%c", 'O' + arc4random() % 10, 'A' + arc4random() % 26,
-                                    'O' + arc4random() % 10, 'A' + arc4random() % 26, 'O' + arc4random() % 10];
+    NSString *randomSerialNumber = [NSString stringWithFormat:@"%c%c%c%c%c",
+                                    'O' + arc4random() % 10,
+                                    'A' + arc4random() % 26,
+                                    'O' + arc4random() % 10,
+                                    'A' + arc4random() % 26,
+                                    'O' + arc4random() % 10];
     
-    BNRItem *newItem = [[self alloc] initWithItemName:randomName valueInDollars:randomValue serialNumber:randomSerialNumber];
+    BNRItem *newItem = [[self alloc] initWithItemName:randomName
+                                       valueInDollars:randomValue
+                                         serialNumber:randomSerialNumber];
     
     return newItem;
     
